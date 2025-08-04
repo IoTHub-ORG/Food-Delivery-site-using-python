@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head><title>Register</title></head>
+<body>
+<h2>Register</h2>
+<form action="" method="post">
+  Username: <input name="username"><br>
+  Password: <input name="password" type="password"><br>
+  Role: <select name="role">
+    <option value="customer">Customer</option>
+    <option value="restaurant">Restaurant Owner</option>
+  </select><br>
+  <button type="submit">Register</button>
+</form>
+<p><a href="{{ url_for('login') }}">Back to login</a></p>
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for cat, msg in messages %}
+      <div>{{ msg }}</div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+</body>
+</html>
