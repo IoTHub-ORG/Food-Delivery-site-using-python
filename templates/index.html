@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>PyFood Delivery - Restaurants</h1>
+
+<ul>
+{% for r in restaurants %}
+  <li>
+    <a href="{{ url_for('restaurant', rest_id=r.id) }}">{{ r.name }}</a>
+  </li>
+{% endfor %}
+</ul>
+
+{% if session.get('username') %}
+  <p>Hello, {{ session.get('username') }}! (<a href="{{ url_for('logout') }}">Logout</a>)</p>
+  {% if session.get('role') == 'restaurant' %}
+    <p><a href="{{ url_for('owner_panel') }}">Owner Panel</a></p>
+  {% else %}
+    <p>
+      <a href="{{ url_for('cart') }}">View Cart</a> |
+      <a href="{{ url_for('orders') }}">Orders</a>
+    </p>
+  {% endif %}
+{% else %}
+  <a href="{{ url_for('login') }}">Login</a> |
+  <a href="{{ url_for('register') }}">Register</a>
+{% endif %}
+{% endblock %}
