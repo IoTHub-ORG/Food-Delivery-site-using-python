@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="hero" style="text-align:center;">
+  <h2 style="color:#ff9100;">Thank You!</h2>
+  <p style="margin-top:1em;">Thanks for placing an order from our site.</p>
+  <p><em>(Actual payment not integrated in this demo site)</em></p>
+  <a href="{{ url_for('restaurants') }}" class="btn" style="margin-top:1.5em;">Back to Restaurants</a>
+</div>
+{% endblock %}

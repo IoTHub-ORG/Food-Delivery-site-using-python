@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head><title>Your Orders</title></head>
+<body>
+<h2>Your Orders</h2>
+{% for r in orders %}
+  <div>
+    <b>Order #{{ r.order.id }}</b> ({{ r.order.status }})<br>
+    <ul>
+      {% for it in r.items %}
+        <li>{{ it.name }} x{{ it.qty }}</li>
+      {% endfor %}
+    </ul>
+    <b>Total: ₹{{ r.order.total }}</b>
+    <hr>
+  </div>
+{% endfor %}
+<p><a href="{{ url_for('home') }}">Back</a></p>
+</body>
+</html>
